@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="/login">
+        <input type="text" name="usuario" placeholder="Usuário" required>
+        <input type="password" name="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const usuario = form.elements.usuario.value;
+                const password = form.elements.password.value;
+
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: new URLSearchParams({ usuario, password }),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('access_token', data.access_token);
+                    alert('Login bem-sucedido!');
+                    // Redirecionar para outra página ou executar ações pós-login aqui
+                } else {
+                    alert('Login falhou. Verifique suas credenciais.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
