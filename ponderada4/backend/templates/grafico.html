@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Linhas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Gráfico de Linhas</h1>
+    <canvas id="lineChart" width="400" height="200"></canvas>
+
+    <script>
+        // Dados de exemplo - você deve substituir isso pelos seus próprios dados previstos
+        const labels = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"];
+        const predictedValues = [10, 20, 15, 25, 30];
+
+        // Configuração do gráfico
+        const ctx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Valores Previstos',
+                    data: predictedValues,
+                    borderColor: 'blue',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -20,6 +20,10 @@ db_password = 'pascolito123'
 def index():
     return render_template('login.html')
 
+@app.route('/grafico')
+def grafico():
+    return render_template('grafico.html')
+
 def connect_to_db():
     return psycopg2.connect(
         host=db_host,

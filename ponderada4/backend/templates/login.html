@@ -32,6 +32,7 @@
                     const data = await response.json();
                     localStorage.setItem('access_token', data.access_token);
                     alert('Login bem-sucedido!');
+                    window.location.href='/grafico'
                     // Redirecionar para outra página ou executar ações pós-login aqui
                 } else {
                     alert('Login falhou. Verifique suas credenciais.');
