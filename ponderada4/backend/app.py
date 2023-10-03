@@ -71,4 +71,5 @@ def signup():
     
     return 'Cadastro realizado com sucesso!'
 
-app.run(port=80, debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
